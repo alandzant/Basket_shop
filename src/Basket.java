@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.util.Arrays;
@@ -39,7 +40,7 @@ public class Basket {
         out.printf("%dр", totalPrice);
     }
 
-    /*
+
 
     public void saveTxt(File textFile) throws IOException {
         try (PrintWriter out = new PrintWriter(textFile)) {
@@ -80,12 +81,12 @@ public class Basket {
     }
 
 
- */
+
 
 
     public void saveJson(File jsonFile) throws IOException {
         try (PrintWriter writer = new PrintWriter(jsonFile)) {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(this);
             writer.print(json);
         }catch (IOException e){
